@@ -41,11 +41,12 @@ const GameResults = (props: Props) => {
         scoreDecrementHandler();
       }
     }
-  }, [renderResult]);
+  }, [renderResult, result, scoreIncrementHandler, scoreDecrementHandler]);
 
   useEffect(() => {
+    if (result) return;
     setResult(getResult(youPicked, housePicked!, gameMode));
-  }, [youPicked, housePicked, gameMode]);
+  }, [youPicked, housePicked, gameMode, result]);
 
   useEffect(() => {
     const timeoutHouse = setTimeout(() => {

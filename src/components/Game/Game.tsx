@@ -31,13 +31,13 @@ const Game = (props: Props) => {
   >();
 
   useEffect(() => {
-    if (youPicked) {
+    if (youPicked && !housePicked) {
       const randomPick =
         gameButtons[Math.floor(Math.random() * gameButtons.length)];
 
       setHousePicked(randomPick);
     }
-  }, [youPicked]);
+  }, [youPicked, housePicked, gameButtons]);
 
   const pickHandler = (pick: typeof gameButtons[number]) => {
     setYouPicked(pick);

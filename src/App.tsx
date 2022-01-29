@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Header from 'components/Header/Header';
 import Game from 'components/Game/Game';
 
@@ -50,14 +50,13 @@ const App = () => {
     window.localStorage.setItem('gameMode', gameMode);
   }, [gameMode]);
 
-  const scoreIncrementHandler = () => {
+  const scoreIncrementHandler = useCallback(() => {
     setScore(prevState => prevState + 1);
-  };
+  }, []);
 
-  const scoreDecrementHandler = () => {
-    if (score === 0) return;
+  const scoreDecrementHandler = useCallback(() => {
     setScore(prevState => prevState - 1);
-  };
+  }, []);
 
   const changeGameModeHandler = (mode: typeof gameModes[number]) => {
     setGameMode(mode);
