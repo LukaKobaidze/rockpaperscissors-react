@@ -1,0 +1,18 @@
+.button {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  padding: 10px 30px;
+  border-radius: 9px;
+  border: 2px solid var(--clr-header-outline);
+  letter-spacing: 4px;
+  background: none;
+  color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #fff;
+    border-color: #fff;
+    color: var(--clr-bg-2);
+  }
+}

@@ -1,0 +1,13 @@
+@use '../abstracts/_animations';
+
+.modal {
+  position: fixed;
+  min-width: 265px;
+  top: 50%;
+  left: 50%;
+  border-radius: 8px;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+  animation: fadeIn 0.25s;
+}

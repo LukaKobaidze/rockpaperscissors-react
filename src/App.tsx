@@ -1,26 +1,81 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
+import Header from 'components/Header/Header';
+import Game from 'components/Game/Game';
 
-function App() {
+export const gameModes = [
+  'RockPaperScissors',
+  'RockPaperScissorsLizardSpock',
+] as const;
+
+export const rockPaperScissorsButtons = ['rock', 'paper', 'scissors'] as const;
+
+export const rockPaperScissorsLizardSpockButtons = [
+  'rock',
+  'paper',
+  'scissors',
+  'lizard',
+  'spock',
+] as const;
+
+export type gameButtonsType =
+  | typeof rockPaperScissorsButtons
+  | typeof rockPaperScissorsLizardSpockButtons;
+
+const App = () => {
+  // Get score from local storage
+  const initialScore = () => Number(window.localStorage.getItem('score')) || 3;
+
+  const [score, setScore] = useState(initialScore);
+
+  // Get game mode from local storage
+  const initialGameMode = () =>
+    (window.localStorage.getItem('gameMode') as typeof gameModes[number]) ||
+    'RockPaperScissors';
+
+  const [gameMode, setGameMode] =
+    useState<typeof gameModes[number]>(initialGameMode);
+
+  useEffect(() => {
+    // Save current score in local storage
+    window.localStorage.setItem('score', JSON.stringify(score));
+  }, [score]);
+
+  useEffect(() => {
+    // Change title of the document based on current game mode
+    const title = document.title;
+    const author = title.slice(title.indexOf('|'));
+    document.title = gameMode + ' ' + author;
+
+    // Save current game mode in local storage
+    window.localStorage.setItem('gameMode', gameMode);
+  }, [gameMode]);
+
+  const scoreIncrementHandler = () => {
+    setScore(prevState => prevState + 1);
+  };
+
+  const scoreDecrementHandler = () => {
+    if (score === 0) return;
+    setScore(prevState => prevState - 1);
+  };
+
+  const changeGameModeHandler = (mode: typeof gameModes[number]) => {
+    setGameMode(mode);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header score={score} gameMode={gameMode} />
+      <main className="main">
+        <Game
+          gameMode={gameMode}
+          changeGameModeHandler={changeGameModeHandler}
+          scoreIncrementHandler={scoreIncrementHandler}
+          scoreDecrementHandler={scoreDecrementHandler}
+        />
+      </main>
+    </>
   );
-}
+};
 
 export default App;

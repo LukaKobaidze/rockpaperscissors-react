@@ -1,0 +1,79 @@
+$transition-time: 300ms;
+
+.game-button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 var(--box-shadow) 0;
+  cursor: pointer;
+  transition: transform $transition-time, box-shadow $transition-time;
+
+  &:active {
+    box-shadow: 0 0 0;
+    transform: translateY(var(--box-shadow));
+
+    & + .game-button__icon-div {
+      height: 75%;
+      box-shadow: 0 calc(var(--box-shadow) / 4) 0 #d9d9d9;
+      transform: translateY(var(--box-shadow));
+    }
+  }
+
+  &--rock {
+    background: linear-gradient(var(--clr-rock-2), var(--clr-rock-1));
+    color: var(--clr-rock-shadow);
+  }
+  &--paper {
+    background: linear-gradient(var(--clr-paper-2), var(--clr-paper-1));
+    color: var(--clr-paper-shadow);
+  }
+  &--scissors {
+    background: linear-gradient(var(--clr-scissors-2), var(--clr-scissors-1));
+    color: var(--clr-scissors-shadow);
+  }
+  &--lizard {
+    background: linear-gradient(var(--clr-lizard-2), var(--clr-lizard-1));
+    color: var(--clr-lizard-shadow);
+  }
+  &--spock {
+    background: linear-gradient(var(--clr-spock-2), var(--clr-spock-1));
+    color: var(--clr-spock-shadow);
+  }
+
+  &__wrapper {
+    --box-shadow: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    @media (max-width: 425px) {
+      --box-shadow: 6px;
+    }
+  }
+
+  &__icon-div {
+    --box-shadow-icon-div: calc(var(--box-shadow) / 1.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 75%;
+    height: calc(75% - var(--box-shadow-icon-div));
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 calc(var(--box-shadow-icon-div) * -1) 0 #d9d9d9;
+    transform: translateY(calc(var(--box-shadow-icon-div) / 2));
+    pointer-events: none;
+    transition: transform $transition-time, box-shadow $transition-time,
+      height $transition-time;
+
+    & > img {
+      display: block;
+      width: 45%;
+    }
+  }
+}

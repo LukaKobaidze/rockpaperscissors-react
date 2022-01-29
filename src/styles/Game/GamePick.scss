@@ -1,0 +1,92 @@
+.game-pick {
+  display: grid;
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+
+  @media (min-width: 1600px) {
+    width: 550px;
+    height: 550px;
+  }
+
+  @media (max-width: 575px) {
+    width: 90vw;
+    height: 90vw;
+    min-width: 270px;
+    min-height: 270px;
+  }
+
+  &--RockPaperScissors {
+    grid-template-rows: repeat(20, 1fr);
+    grid-template-columns: repeat(20, 1fr);
+    margin-top: 66px;
+  }
+  &--RockPaperScissorsLizardSpock {
+    grid-template-rows: repeat(24, 1fr);
+    grid-template-columns: repeat(24, 1fr);
+    margin-top: 40px;
+  }
+
+  &--RockPaperScissors {
+    $button-size: 8;
+    &__rock {
+      grid-row: 11 / span $button-size;
+      grid-column: 7 / span $button-size;
+    }
+    &__paper {
+      grid-row: 1 / span $button-size;
+      grid-column: 1 / span $button-size;
+    }
+    &__scissors {
+      grid-row: 1 / span $button-size;
+      grid-column: -9 / span $button-size;
+    }
+  }
+
+  &--RockPaperScissorsLizardSpock {
+    $button-size: 7;
+    &__rock {
+      grid-row: 17 / span $button-size;
+      grid-column: 15 / span $button-size;
+    }
+    &__paper {
+      grid-row: 8 / span $button-size;
+      grid-column: 18 / span $button-size;
+    }
+    &__scissors {
+      grid-row: 1 / span $button-size;
+      grid-column: 10 / span $button-size;
+    }
+    &__lizard {
+      grid-row: 17 / span $button-size;
+      grid-column: 4 / span $button-size;
+    }
+    &__spock {
+      grid-row: 8 / span $button-size;
+      grid-column: 1 / span $button-size;
+    }
+  }
+  &__background {
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+    & > svg {
+      transform: scale(1.1);
+      overflow: visible;
+
+      @media (max-width: 500px) {
+        transform: scale(0.9);
+      }
+      @media (max-width: 400px) {
+        transform: scale(0.8);
+      }
+      @media (max-width: 360px) {
+        transform: scale(0.6);
+      }
+    }
+  }
+}
