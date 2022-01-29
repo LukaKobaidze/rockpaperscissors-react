@@ -64,4 +64,8 @@ body {
     min-height: 550px;
     max-height: 630px;
   }
+  @media (max-width: 480px) {
+    height: 69vh;
+    min-height: 490px;
+  }
 }
