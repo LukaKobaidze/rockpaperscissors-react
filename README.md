@@ -43,4 +43,4 @@ Users should be able to:
 ## Author
 
 - Frontend Mentor - [@LukaKobaidze](https://www.frontendmentor.io/profile/LukaKobaidze)
-- FreeCodeCamp - [@lukakobaidze]()
+- FreeCodeCamp - [@lukakobaidze](https://www.freecodecamp.org/lukakobaidze)
