@@ -1,0 +1,50 @@
+.input {
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  color: currentColor;
+  background-color: var(--clr-bg-2);
+  border: 1px solid;
+  border-color: var(--clr-spock-2);
+  outline: none;
+  transition: border-color 200ms;
+  padding: 10px;
+  border-radius: 6px;
+
+  &--active {
+    border-color: var(--clr-paper-2);
+  }
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--clr-spock-2);
+  }
+
+  &__placeholder {
+    position: absolute;
+    left: 15px;
+    pointer-events: none;
+    z-index: 2;
+    transition: transform 200ms;
+
+    &--active {
+      top: -1px;
+      transform: translateY(-50%) scale(0.9);
+      color: var(--clr-paper-2);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      --offset: -5px;
+      top: 50%;
+      right: var(--offset);
+      bottom: 0;
+      left: var(--offset);
+      z-index: -1;
+      background-color: var(--clr-bg-2);
+    }
+  }
+}

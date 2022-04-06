@@ -1,0 +1,49 @@
+.modal {
+  width: 440px;
+  padding: 25px 35px;
+
+  @media (max-width: 490px) {
+    width: 90%;
+  }
+
+  &__btn-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+  }
+  &__image-div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    & > svg {
+      overflow: visible;
+    }
+
+    &--RockPaperScissors {
+      transform: scale(1.1);
+      margin-top: 60px;
+      margin-bottom: 25px;
+    }
+    &--RockPaperScissorsLizardSpock {
+      margin-top: 25px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 435px) {
+      margin: 0;
+      transform: scale(0.9);
+    }
+    @media (max-width: 375px) {
+      transform: scale(0.8);
+    }
+    @media (max-width: 335px) {
+      transform: scale(0.65);
+    }
+  }
+}

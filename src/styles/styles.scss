@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+:root {
+  /* Colors */
+  --clr-rock-1: hsl(349, 71%, 52%);
+  --clr-rock-2: hsl(349, 70%, 56%);
+  --clr-rock-shadow: hsl(349, 70%, 37%);
+
+  --clr-paper-1: hsl(230, 89%, 62%);
+  --clr-paper-2: hsl(230, 89%, 65%);
+  --clr-paper-shadow: hsl(230, 89%, 55%);
+
+  --clr-scissors-1: hsl(39, 89%, 49%);
+  --clr-scissors-2: hsl(40, 84%, 53%);
+  --clr-scissors-shadow: hsl(40, 84%, 35%);
+
+  --clr-lizard-1: hsl(261, 73%, 60%);
+  --clr-lizard-2: hsl(261, 72%, 63%);
+  --clr-lizard-shadow: hsl(261, 72%, 53%);
+
+  --clr-spock-1: hsl(189, 59%, 53%);
+  --clr-spock-2: hsl(189, 58%, 57%);
+  --clr-spock-shadow: hsl(189, 58%, 40%);
+
+  --clr-dark-text: hsl(229, 25%, 31%);
+  --clr-score-text: hsl(229, 64%, 46%);
+  --clr-header-outline: hsl(217, 16%, 45%);
+
+  --clr-bg-1: hsl(214, 47%, 23%);
+  --clr-bg-2: hsl(237, 49%, 15%);
+
+  /* Fonts */
+  --font-family: 'Barlow Semi Condensed', sans-serif;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semibold);
+  background-color: var(--clr-bg-2);
+  background: radial-gradient(circle at top, var(--clr-bg-1), var(--clr-bg-2));
+  background-repeat: no-repeat;
+  color: var(--clr-dark-text);
+  min-height: 100vh;
+}
+
+.main {
+  @media (max-width: 600px) {
+    position: relative;
+    height: 70vh;
+    min-height: 550px;
+    max-height: 630px;
+  }
+  @media (max-width: 480px) {
+    height: 69vh;
+    min-height: 490px;
+  }
+}

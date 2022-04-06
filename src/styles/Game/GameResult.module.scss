@@ -1,6 +1,6 @@
-@use '../abstracts/_animations';
+@use '../utilities/_animations';
 
-.game-results {
+.results {
   display: flex;
   justify-content: space-between;
   position: relative;

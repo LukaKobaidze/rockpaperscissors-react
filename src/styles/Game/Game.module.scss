@@ -1,0 +1,27 @@
+.game {
+  @media (max-width: 600px) {
+    position: relative;
+    height: 70vh;
+    min-height: 550px;
+    max-height: 630px;
+  }
+  @media (max-width: 480px) {
+    height: 69vh;
+    min-height: 490px;
+  }
+}
+
+.button-rules {
+  position: fixed;
+  right: 30px;
+  bottom: 25px;
+
+  @media (max-width: 600px) {
+    position: absolute;
+  }
+  @media (max-width: 425px) {
+    right: 50%;
+    bottom: 20px;
+    transform: translateX(50%);
+  }
+}

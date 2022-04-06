@@ -1,4 +1,4 @@
-.header-score {
+.score {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,9 +42,7 @@
     @media (max-width: 650px) {
       font-size: 57px;
     }
-    @media (max-width: 525px) {
-      font-size: 55px;
-    }
+
     @media (max-width: 425px) {
       font-size: 37px;
     }
