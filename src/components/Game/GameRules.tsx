@@ -1,18 +1,19 @@
-import { useState } from 'react';
-import { gameModes } from 'App';
+import { useContext, useState } from 'react';
+import { GameContext } from 'context';
+import { Backdrop, Button, Modal } from 'components/UI';
 import { ReactComponent as IconClose } from 'assets/images/icon-close.svg';
 import { ReactComponent as ImageRules1 } from 'assets/images/image-rules.svg';
-import { ReactComponent as ImageRules2 } from 'assets/images/image-rules-bonus.svg';
-import Backdrop from 'components/UI/Backdrop';
-import Modal from 'components/UI/Modal';
-import Button from 'components/UI/Button';
-import 'styles/Game/GameRules.scss';
+import { ReactComponent as ImageRules2 } from 'assets/images/image-rules-lizardspock.svg';
+import styles from 'styles/Game/GameRules.module.scss';
 
 type Props = {
-  gameMode: typeof gameModes[number];
+  className?: string;
 };
 
-const GameRules = ({ gameMode }: Props) => {
+const GameRules = ({ className }: Props) => {
+  const {
+    state: { gamemode },
+  } = useContext(GameContext);
   const [showModal, setShowModal] = useState(false);
 
   const showModalHandler = () => {
@@ -24,28 +25,33 @@ const GameRules = ({ gameMode }: Props) => {
 
   return (
     <>
-      <Button className="game-rules__button" onClick={showModalHandler}>
+      <Button
+        className={`${styles.button} ${className}`}
+        onClick={showModalHandler}
+      >
         RULES
       </Button>
 
       {showModal && (
         <>
           <Backdrop onClick={hideModalHandler} />
-          <Modal className="game-rules__modal">
-            <header className="game-rules__modal__header">
+          <Modal className={styles.modal}>
+            <header className={styles['modal__header']}>
               <h2>RULES</h2>
               <button
-                className="game-rules__modal__btn-close"
+                className={styles['modal__btn-close']}
                 onClick={hideModalHandler}
               >
                 <IconClose />
               </button>
             </header>
             <div
-              className={`game-rules__modal__image-div game-rules__modal__image-div--${gameMode}`}
+              className={`${styles['modal__image-div']} ${
+                styles[`modal__image-div--${gamemode}`]
+              }`}
             >
-              {gameMode === 'RockPaperScissors' && <ImageRules1 />}
-              {gameMode === 'RockPaperScissorsLizardSpock' && <ImageRules2 />}
+              {gamemode === 'RockPaperScissors' && <ImageRules1 />}
+              {gamemode === 'RockPaperScissorsLizardSpock' && <ImageRules2 />}
             </div>
           </Modal>
         </>

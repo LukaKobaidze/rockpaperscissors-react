@@ -1,19 +1,20 @@
-import { gameModes } from 'App';
-import HeaderLogo from './HeaderLogo';
-import HeaderScore from './HeaderScore';
-import 'styles/Header/Header.scss';
+import { useContext } from 'react';
+import { GameContext } from 'context';
+import { Logo, Score } from 'components/UI';
+import styles from 'styles/Header/Header.module.scss';
 
-type Props = {
-  score: number;
-  gameMode: typeof gameModes[number];
-};
+const Header = () => {
+  const {
+    state: { gamemode, score },
+  } = useContext(GameContext);
 
-const Header = ({ score, gameMode }: Props) => {
   return (
-    <header className="header">
-      <div className="header__content">
-        <HeaderLogo gameMode={gameMode} />
-        <HeaderScore score={score} />
+    <header className={styles.header}>
+      <div className={styles.content}>
+        <div className={styles['logo-div']}>
+          <Logo type={gamemode} />
+        </div>
+        <Score score={score} />
       </div>
     </header>
   );

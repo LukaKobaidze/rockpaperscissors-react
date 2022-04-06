@@ -1,14 +1,12 @@
-import 'styles/UI/Button.scss';
+import styles from 'styles/UI/Button.module.scss';
 
-type Props = {
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  className?: string;
-  onClick?: () => void;
-};
+}
 
-const Button = ({ children, className, onClick }: Props) => {
+const Button = ({ children, className, ...rest }: Props) => {
   return (
-    <button className={`button ${className}`} onClick={onClick}>
+    <button className={`${styles.button} ${className}`} {...rest}>
       {children}
     </button>
   );

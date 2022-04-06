@@ -1,32 +1,41 @@
-import { gameButtonsType, gameModes } from 'App';
+import { useContext } from 'react';
+import { GameContext } from 'context';
+import {
+  rockPaperScissorsButtons,
+  rockPaperScissorsLizardSpockButtons,
+} from 'shared/types';
 import { ReactComponent as BgTriangle } from 'assets/images/bg-triangle.svg';
 import { ReactComponent as BgPentagon } from 'assets/images/bg-pentagon.svg';
 import GameButton from './GameButton';
-import 'styles/Game/GamePick.scss';
+import styles from 'styles/Game/GamePick.module.scss';
 
-type Props = {
-  gameMode: typeof gameModes[number];
-  gameButtons: gameButtonsType;
-  pickHandler: (pick: gameButtonsType[number]) => void;
-};
+const GamePick = () => {
+  const {
+    state: { gamemode },
+    handlers: { onPick },
+  } = useContext(GameContext);
 
-const GamePick = ({ gameMode, gameButtons, pickHandler }: Props) => {
+  const buttons =
+    gamemode === 'RockPaperScissors'
+      ? rockPaperScissorsButtons
+      : rockPaperScissorsLizardSpockButtons;
+
   return (
-    <div className={`game-pick game-pick--${gameMode}`}>
-      {gameButtons.map(button => (
+    <div className={`${styles.container} ${styles[`container--${gamemode}`]}`}>
+      {buttons.map((button) => (
         <GameButton
           key={button}
           type={button}
           boxShadowSize={
-            gameMode === 'RockPaperScissorsLizardSpock' ? '8px' : undefined
+            gamemode === 'RockPaperScissorsLizardSpock' ? '8px' : undefined
           }
-          className={`game-pick--${gameMode}__${button}`}
-          onClick={() => pickHandler(button)}
+          className={styles[`container--${gamemode}__${button}`]}
+          onClick={() => onPick(button)}
         />
       ))}
-      <div className={`game-pick__background`}>
-        {gameMode === 'RockPaperScissors' && <BgTriangle />}
-        {gameMode === 'RockPaperScissorsLizardSpock' && <BgPentagon />}
+      <div className={styles['container__background']}>
+        {gamemode === 'RockPaperScissors' && <BgTriangle />}
+        {gamemode === 'RockPaperScissorsLizardSpock' && <BgPentagon />}
       </div>
     </div>
   );

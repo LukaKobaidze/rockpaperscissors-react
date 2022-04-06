@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom';
-import 'styles/UI/Modal.scss';
+import styles from 'styles/UI/Modal.module.scss';
 
 type Props = {
   children?: React.ReactNode;
@@ -8,7 +8,7 @@ type Props = {
 
 const Modal = ({ children, className }: Props) => {
   return createPortal(
-    <div className={`modal ${className}`}>{children}</div>,
+    <div className={`${styles.modal} ${className}`}>{children}</div>,
     document.getElementById('root') as HTMLDivElement
   );
 };

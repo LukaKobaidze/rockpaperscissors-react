@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom';
-import 'styles/UI/Backdrop.scss';
+import styles from 'styles/UI/Backdrop.module.scss';
 
 type Props = {
   children?: React.ReactNode;
@@ -9,7 +9,7 @@ type Props = {
 
 const Backdrop = ({ children, className, onClick }: Props) => {
   return createPortal(
-    <div className={`backdrop ${className}`} onClick={onClick}>
+    <div className={`${styles.backdrop} ${className}`} onClick={onClick}>
       {children}
     </div>,
     document.getElementById('root') as HTMLDivElement
